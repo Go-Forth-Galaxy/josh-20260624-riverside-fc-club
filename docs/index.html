@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Riverside FC — One City. One Club.</title>
+<meta name="description" content="Riverside FC — community football club. Fixtures, roster, and how to join. One City. One Club." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230a1633'/%3E%3Ctext x='50' y='68' font-size='54' font-family='Arial' font-weight='900' fill='%2300e676' text-anchor='middle'%3ER%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --navy:#0a1633;
+    --navy-2:#0e1f4a;
+    --navy-3:#142a5e;
+    --green:#00e676;
+    --green-dim:#00c853;
+    --ink:#0a1633;
+    --muted:#5b6478;
+    --paper:#f6f8fc;
+    --white:#ffffff;
+    --line:rgba(10,22,51,.08);
+    --shadow:0 18px 50px -20px rgba(10,22,51,.45);
+    --radius:18px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:78px}
+  body{font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);background:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3,.brand{font-family:'Sora','Inter',sans-serif;letter-spacing:-.02em;line-height:1.08}
+  a{color:inherit;text-decoration:none}
+  .wrap{width:min(1140px,92vw);margin:0 auto}
+  .green{color:var(--green-dim)}
+  .eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-weight:700;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--green-dim)}
+  .eyebrow::before{content:"";width:26px;height:2px;background:var(--green)}
+
+  /* NAV */
+  header.nav{position:sticky;top:0;z-index:50;background:rgba(10,22,51,.86);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.08)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .brand{display:flex;align-items:center;gap:.7rem;color:#fff;font-weight:800;font-size:1.2rem}
+  .crest{width:40px;height:40px;border-radius:11px;background:linear-gradient(145deg,var(--navy-3),var(--navy));display:grid;place-items:center;font-family:'Sora';font-weight:800;color:var(--green);border:1.5px solid rgba(0,230,118,.5);box-shadow:0 0 0 3px rgba(0,230,118,.08)}
+  .brand small{display:block;font-size:.62rem;letter-spacing:.22em;color:var(--green);font-weight:700;margin-top:1px}
+  nav.links{display:flex;align-items:center;gap:2rem}
+  nav.links a{color:rgba(255,255,255,.78);font-weight:600;font-size:.92rem;transition:color .2s}
+  nav.links a:hover{color:#fff}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-weight:700;font-size:.92rem;padding:.72rem 1.35rem;border-radius:999px;cursor:pointer;transition:transform .15s ease,box-shadow .2s ease,background .2s;border:none}
+  .btn-green{background:var(--green);color:var(--navy);box-shadow:0 10px 24px -10px rgba(0,230,118,.8)}
+  .btn-green:hover{transform:translateY(-2px);box-shadow:0 16px 30px -10px rgba(0,230,118,.9)}
+  .btn-ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.28)}
+  .btn-ghost:hover{border-color:var(--green);color:var(--green)}
+  .nav .btn{padding:.6rem 1.15rem}
+  @media(max-width:820px){nav.links a:not(.btn){display:none}}
+
+  /* HERO */
+  .hero{position:relative;background:radial-gradient(1200px 600px at 80% -10%,rgba(0,230,118,.18),transparent 55%),linear-gradient(160deg,var(--navy) 0%,var(--navy-2) 55%,#091230 100%);color:#fff;overflow:hidden}
+  .hero::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:54px 54px;mask-image:radial-gradient(900px 500px at 75% 10%,#000,transparent 70%);pointer-events:none}
+  .hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1.15fr .85fr;gap:3rem;align-items:center;padding:5.5rem 0 6rem}
+  .hero h1{font-size:clamp(2.8rem,6.2vw,5rem);font-weight:800}
+  .hero h1 .out{color:transparent;-webkit-text-stroke:1.6px rgba(255,255,255,.5)}
+  .tagline{font-family:'Sora';font-weight:700;font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--green);margin-top:.4rem;letter-spacing:.01em}
+  .hero p.lead{color:rgba(255,255,255,.78);font-size:1.06rem;max-width:46ch;margin:1.4rem 0 2rem}
+  .hero-cta{display:flex;gap:.9rem;flex-wrap:wrap}
+  .stats{display:flex;gap:2.4rem;margin-top:2.8rem;flex-wrap:wrap}
+  .stat .n{font-family:'Sora';font-weight:800;font-size:2rem;color:#fff;line-height:1}
+  .stat .l{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-top:.4rem}
+  .badge-card{position:relative;background:linear-gradient(165deg,rgba(255,255,255,.08),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.14);border-radius:26px;padding:2.2rem;backdrop-filter:blur(6px);box-shadow:var(--shadow)}
+  .badge-crest{width:120px;height:120px;margin:0 auto 1.2rem;border-radius:30px;background:linear-gradient(145deg,var(--navy-3),#0a1633);display:grid;place-items:center;border:2px solid rgba(0,230,118,.55);box-shadow:0 0 0 6px rgba(0,230,118,.1),inset 0 0 30px rgba(0,230,118,.15)}
+  .badge-crest span{font-family:'Sora';font-weight:800;font-size:3.4rem;color:var(--green)}
+  .badge-card h3{text-align:center;color:#fff;font-size:1.3rem}
+  .badge-card .est{text-align:center;color:rgba(255,255,255,.6);font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;margin-top:.3rem}
+  .next-match{margin-top:1.4rem;border-top:1px dashed rgba(255,255,255,.18);padding-top:1.2rem;text-align:center}
+  .next-match .tag{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--green)}
+  .next-match .fixture{color:#fff;font-weight:700;font-family:'Sora';margin-top:.35rem;font-size:1.05rem}
+  .next-match .meta{color:rgba(255,255,255,.6);font-size:.84rem;margin-top:.25rem}
+  @media(max-width:880px){.hero-inner{grid-template-columns:1fr;padding:3.5rem 0 4rem}.badge-card{max-width:380px}}
+
+  /* SECTIONS */
+  section.block{padding:5.5rem 0}
+  .section-head{max-width:640px;margin-bottom:2.8rem}
+  .section-head h2{font-size:clamp(1.9rem,4vw,2.8rem);font-weight:800;margin-top:.8rem}
+  .section-head p{color:var(--muted);font-size:1.05rem;margin-top:.8rem}
+  .alt{background:var(--paper)}
+
+  /* ABOUT */
+  .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:3rem;align-items:center}
+  .about-grid p{color:var(--muted);margin-bottom:1.1rem;font-size:1.04rem}
+  .feature-cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+  .fcard{background:#fff;border:1px solid var(--line);border-radius:16px;padding:1.4rem;box-shadow:0 10px 30px -22px rgba(10,22,51,.5)}
+  .fcard .ic{width:42px;height:42px;border-radius:12px;background:linear-gradient(145deg,var(--navy),var(--navy-3));display:grid;place-items:center;color:var(--green);font-weight:800;font-family:'Sora';margin-bottom:.9rem}
+  .fcard h4{font-family:'Sora';font-size:1.02rem;margin-bottom:.3rem}
+  .fcard p{font-size:.9rem;color:var(--muted);margin:0}
+  @media(max-width:880px){.about-grid{grid-template-columns:1fr}}
+
+  /* SCHEDULE */
+  .fixtures{display:flex;flex-direction:column;gap:.9rem}
+  .fixture-row{display:grid;grid-template-columns:auto 1fr auto auto;gap:1.4rem;align-items:center;background:#fff;border:1px solid var(--line);border-left:4px solid var(--green);border-radius:14px;padding:1.15rem 1.5rem;transition:transform .15s,box-shadow .2s}
+  .fixture-row:hover{transform:translateX(4px);box-shadow:0 16px 34px -22px rgba(10,22,51,.6)}
+  .fx-date{text-align:center;min-width:62px}
+  .fx-date .d{font-family:'Sora';font-weight:800;font-size:1.5rem;color:var(--navy);line-height:1}
+  .fx-date .m{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:.2rem}
+  .fx-main .comp{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--green-dim);font-weight:700}
+  .fx-main .opp{font-family:'Sora';font-weight:700;font-size:1.12rem;margin-top:.15rem}
+  .fx-main .opp .v{color:var(--muted);font-weight:500;font-family:'Inter';margin-right:.4rem}
+  .fx-time{color:var(--muted);font-size:.9rem;font-weight:600;text-align:right}
+  .ha{font-weight:800;font-size:.72rem;letter-spacing:.1em;padding:.4rem .8rem;border-radius:999px;text-align:center}
+  .ha.home{background:rgba(0,230,118,.14);color:var(--green-dim)}
+  .ha.away{background:rgba(10,22,51,.08);color:var(--navy)}
+  @media(max-width:720px){.fixture-row{grid-template-columns:auto 1fr;gap:1rem}.fx-time{display:none}.fx-main{order:3}}
+
+  /* ROSTER */
+  .roster-filters{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:2rem}
+  .chip{font-weight:700;font-size:.82rem;padding:.5rem 1.1rem;border-radius:999px;border:1.5px solid var(--line);background:#fff;cursor:pointer;color:var(--muted);transition:all .18s}
+  .chip:hover{border-color:var(--navy);color:var(--navy)}
+  .chip.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .roster-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(195px,1fr));gap:1.1rem}
+  .player{position:relative;background:linear-gradient(170deg,var(--navy) 0%,var(--navy-2) 100%);border-radius:18px;padding:1.5rem 1.3rem 1.3rem;color:#fff;overflow:hidden;transition:transform .18s,box-shadow .25s}
+  .player::before{content:"";position:absolute;right:-18px;top:-26px;font-family:'Sora';font-weight:800;font-size:7rem;color:rgba(255,255,255,.05);line-height:1}
+  .player:hover{transform:translateY(-5px);box-shadow:0 24px 44px -22px rgba(0,230,118,.5)}
+  .player .num{position:absolute;top:1.1rem;right:1.3rem;font-family:'Sora';font-weight:800;font-size:1.8rem;color:var(--green);z-index:2}
+  .player .pos-tag{display:inline-block;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--green);background:rgba(0,230,118,.12);padding:.28rem .6rem;border-radius:6px}
+  .player .pname{font-family:'Sora';font-weight:700;font-size:1.16rem;margin-top:2.6rem}
+  .player .prole{color:rgba(255,255,255,.62);font-size:.86rem;margin-top:.15rem}
+  .player.captain .pname::after{content:"C";display:inline-grid;place-items:center;width:18px;height:18px;font-size:.62rem;background:var(--green);color:var(--navy);border-radius:5px;margin-left:.5rem;vertical-align:middle;font-family:'Inter';font-weight:800}
+  .avatar{width:54px;height:54px;border-radius:50%;background:linear-gradient(145deg,var(--navy-3),#091230);border:2px solid rgba(0,230,118,.4);display:grid;place-items:center;font-family:'Sora';font-weight:800;color:var(--green);font-size:1.1rem}
+
+  /* JOIN */
+  .join{background:radial-gradient(900px 500px at 15% 20%,rgba(0,230,118,.16),transparent 60%),linear-gradient(150deg,var(--navy),#091230);color:#fff;border-radius:28px;padding:clamp(2.4rem,5vw,4rem);box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .join h2{font-size:clamp(2rem,4.5vw,3rem);max-width:14ch}
+  .join p{color:rgba(255,255,255,.8);max-width:52ch;margin:1rem 0 0}
+  .join-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:2.5rem;align-items:start}
+  form.join-form{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:1.7rem}
+  form.join-form label{display:block;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.7);font-weight:700;margin:0 0 .4rem}
+  form.join-form input,form.join-form select{width:100%;padding:.8rem 1rem;border-radius:11px;border:1px solid rgba(255,255,255,.16);background:rgba(10,22,51,.5);color:#fff;font-family:inherit;font-size:.95rem;margin-bottom:1.05rem}
+  form.join-form input::placeholder{color:rgba(255,255,255,.4)}
+  form.join-form input:focus,form.join-form select:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px rgba(0,230,118,.2)}
+  .join-contact{display:flex;flex-direction:column;gap:1.2rem;margin-top:1.8rem}
+  .jc{display:flex;gap:.9rem;align-items:flex-start}
+  .jc .ic{width:40px;height:40px;border-radius:11px;background:rgba(0,230,118,.14);display:grid;place-items:center;color:var(--green);flex:none}
+  .jc .l{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+  .jc .v{font-weight:600;color:#fff;font-size:.98rem}
+  .form-note{font-size:.82rem;color:rgba(255,255,255,.6);margin-top:.4rem;text-align:center}
+  @media(max-width:880px){.join-grid{grid-template-columns:1fr}}
+
+  /* FOOTER */
+  footer{background:#070f26;color:rgba(255,255,255,.66);padding:3rem 0 2.2rem}
+  .foot-top{display:flex;justify-content:space-between;align-items:center;gap:1.5rem;flex-wrap:wrap;padding-bottom:1.6rem;border-bottom:1px solid rgba(255,255,255,.08)}
+  .foot-links{display:flex;gap:1.6rem;flex-wrap:wrap}
+  .foot-links a{color:rgba(255,255,255,.7);font-weight:600;font-size:.9rem}
+  .foot-links a:hover{color:var(--green)}
+  .socials{display:flex;gap:.6rem}
+  .socials a{width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.06);display:grid;place-items:center;color:#fff;transition:background .2s}
+  .socials a:hover{background:var(--green);color:var(--navy)}
+  .foot-bottom{margin-top:1.6rem;font-size:.84rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+  svg{display:block}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top">
+      <span class="crest">RF</span>
+      <span>RIVERSIDE FC<small>ONE CITY. ONE CLUB.</small></span>
+    </a>
+    <nav class="links">
+      <a href="#about">About</a>
+      <a href="#schedule">Fixtures</a>
+      <a href="#roster">Roster</a>
+      <a href="#join" class="btn btn-green">Join the Club</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-inner">
+    <div>
+      <span class="eyebrow">Est. 2009 · Riverside City League</span>
+      <h1>RIVERSIDE <span class="out">FC</span></h1>
+      <div class="tagline">One City. One Club.</div>
+      <p class="lead">A community football club built on grit, togetherness, and the roar of the home end. We play fast, we play bold, and we play for the badge — for everyone who calls Riverside home.</p>
+      <div class="hero-cta">
+        <a href="#join" class="btn btn-green">Join the Club →</a>
+        <a href="#schedule" class="btn btn-ghost">View Fixtures</a>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="n">17</div><div class="l">Years Strong</div></div>
+        <div class="stat"><div class="n">3×</div><div class="l">League Champions</div></div>
+        <div class="stat"><div class="n">8,500</div><div class="l">Season Members</div></div>
+      </div>
+    </div>
+    <div class="badge-card">
+      <div class="badge-crest"><span>RF</span></div>
+      <h3>Riverside FC</h3>
+      <div class="est">Founded 2009 · Green & Navy</div>
+      <div class="next-match">
+        <div class="tag">Next Match</div>
+        <div class="fixture">Riverside FC vs Harbor City SC</div>
+        <div class="meta">Sat, Jul 4 · 3:00 PM · Riverside Park Stadium</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="block" id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div>
+        <span class="eyebrow">About the Club</span>
+        <h2 style="font-size:clamp(1.9rem,4vw,2.8rem);font-weight:800;margin:.7rem 0 1.3rem;font-family:'Sora'">More than a team — a city's heartbeat.</h2>
+        <p>Founded in 2009 by a handful of friends on the banks of the river, Riverside FC has grown from a Sunday-league side into one of the region's most respected community clubs. We've never lost sight of where we came from: the same streets, the same supporters, the same belief.</p>
+        <p>From our youth academy to the first team, every player wears the navy and electric green with pride. We compete hard on the pitch and invest deeply off it — running free coaching clinics, community days, and pathways for the next generation of Riverside talent.</p>
+        <p>Home matches are played at <strong>Riverside Park Stadium</strong>, where 8,500 members make it one of the loudest grounds in the league.</p>
+      </div>
+      <div class="feature-cards">
+        <div class="fcard"><div class="ic">★</div><h4>Community First</h4><p>Free clinics, school programs, and open training days all season long.</p></div>
+        <div class="fcard"><div class="ic">⚡</div><h4>Bold, Fast Football</h4><p>A high-press, attacking identity that's all our own.</p></div>
+        <div class="fcard"><div class="ic">⚑</div><h4>Academy Pathway</h4><p>From U8s to the first team — homegrown talent, every time.</p></div>
+        <div class="fcard"><div class="ic">♥</div><h4>Member Owned</h4><p>8,500 members with a real say in the club's future.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section class="block alt" id="schedule">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">2026 Season</span>
+      <h2>Upcoming Fixtures</h2>
+      <p>Five matches that'll define our summer. Get to the ground, make some noise, and back the badge.</p>
+    </div>
+    <div class="fixtures">
+      <div class="fixture-row">
+        <div class="fx-date"><div class="d">04</div><div class="m">Jul</div></div>
+        <div class="fx-main"><div class="comp">Riverside City League</div><div class="opp"><span class="v">vs</span>Harbor City SC</div></div>
+        <div class="fx-time">3:00 PM<br>Riverside Park</div>
+        <div class="ha home">HOME</div>
+      </div>
+      <div class="fixture-row">
+        <div class="fx-date"><div class="d">11</div><div class="m">Jul</div></div>
+        <div class="fx-main"><div class="comp">Riverside City League</div><div class="opp"><span class="v">at</span>Northgate United</div></div>
+        <div class="fx-time">7:30 PM<br>Northgate Arena</div>
+        <div class="ha away">AWAY</div>
+      </div>
+      <div class="fixture-row">
+        <div class="fx-date"><div class="d">15</div><div class="m">Jul</div></div>
+        <div class="fx-main"><div class="comp">Regional Cup · Round 2</div><div class="opp"><span class="v">vs</span>Eastside Athletic</div></div>
+        <div class="fx-time">8:00 PM<br>Riverside Park</div>
+        <div class="ha home">HOME</div>
+      </div>
+      <div class="fixture-row">
+        <div class="fx-date"><div class="d">19</div><div class="m">Jul</div></div>
+        <div class="fx-main"><div class="comp">Riverside City League</div><div class="opp"><span class="v">at</span>Summit Rovers</div></div>
+        <div class="fx-time">2:00 PM<br>Summit Ground</div>
+        <div class="ha away">AWAY</div>
+      </div>
+      <div class="fixture-row">
+        <div class="fx-date"><div class="d">25</div><div class="m">Jul</div></div>
+        <div class="fx-main"><div class="comp">Riverside City League</div><div class="opp"><span class="v">vs</span>Ironworks FC</div></div>
+        <div class="fx-time">3:00 PM<br>Riverside Park</div>
+        <div class="ha home">HOME</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROSTER -->
+<section class="block" id="roster">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">First Team</span>
+      <h2>The Squad</h2>
+      <p>Fourteen players. One badge. Meet the names that pull on the navy and green every week.</p>
+    </div>
+    <div class="roster-filters" id="filters">
+      <button class="chip active" data-pos="all">All</button>
+      <button class="chip" data-pos="Goalkeeper">Goalkeepers</button>
+      <button class="chip" data-pos="Defender">Defenders</button>
+      <button class="chip" data-pos="Midfielder">Midfielders</button>
+      <button class="chip" data-pos="Forward">Forwards</button>
+    </div>
+    <div class="roster-grid" id="roster-grid"></div>
+  </div>
+</section>
+
+<!-- JOIN -->
+<section class="block alt" id="join">
+  <div class="wrap">
+    <div class="join">
+      <div class="join-grid">
+        <div>
+          <span class="eyebrow" style="color:var(--green)">Get Involved</span>
+          <h2 style="font-family:'Sora'">Join the Club today.</h2>
+          <p>Whether you want to play, coach, volunteer, or just become a card-carrying member of the loudest end in the league — there's a place for you at Riverside FC. Sign up below and we'll be in touch within 48 hours.</p>
+          <div class="join-contact">
+            <div class="jc"><div class="ic">✉</div><div><div class="l">Email</div><div class="v">join@riversidefc.club</div></div></div>
+            <div class="jc"><div class="ic">✆</div><div><div class="l">Phone</div><div class="v">(555) 014-7788</div></div></div>
+            <div class="jc"><div class="ic">⚲</div><div><div class="l">Ground</div><div class="v">Riverside Park Stadium, 12 Embankment Way</div></div></div>
+          </div>
+        </div>
+        <form class="join-form" onsubmit="event.preventDefault();this.querySelector('.form-note').textContent='Thanks! We\'ll be in touch within 48 hours. ⚽';this.querySelector('button').textContent='Submitted ✓';">
+          <label for="name">Full Name</label>
+          <input id="name" type="text" placeholder="Alex Rivera" required />
+          <label for="email">Email Address</label>
+          <input id="email" type="email" placeholder="you@email.com" required />
+          <label for="interest">I want to…</label>
+          <select id="interest">
+            <option>Play for the club</option>
+            <option>Become a member / season ticket</option>
+            <option>Coach or volunteer</option>
+            <option>Enroll in the youth academy</option>
+          </select>
+          <button type="submit" class="btn btn-green" style="width:100%">Join the Club →</button>
+          <div class="form-note">No commitment — we'll reach out with the details.</div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <a class="brand" href="#top"><span class="crest">RF</span><span style="color:#fff">RIVERSIDE FC<small>ONE CITY. ONE CLUB.</small></span></a>
+      <nav class="foot-links">
+        <a href="#about">About</a>
+        <a href="#schedule">Fixtures</a>
+        <a href="#roster">Roster</a>
+        <a href="#join">Join</a>
+      </nav>
+      <div class="socials">
+        <a href="#" aria-label="Facebook"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12Z"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" aria-label="X"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7.3 8.3L23 22h-6.8l-5.3-6.9L4.8 22H1.7l7.8-8.9L1 2h7l4.8 6.3L18.9 2Zm-2.4 18h1.9L7.6 4H5.6l10.9 16Z"/></svg></a>
+        <a href="#" aria-label="YouTube"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 0 0-1.8-1.8C19.3 5 12 5 12 5s-7.3 0-8.8.5A2.5 2.5 0 0 0 1.4 7.3C1 8.8 1 12 1 12s0 3.2.4 4.7a2.5 2.5 0 0 0 1.8 1.8C4.7 19 12 19 12 19s7.3 0 8.8-.5a2.5 2.5 0 0 0 1.8-1.8C23 15.2 23 12 23 12Zm-13 3V9l5.2 3-5.2 3Z"/></svg></a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div>© 2026 Riverside FC · One City. One Club.</div>
+      <div>Riverside Park Stadium · 12 Embankment Way · join@riversidefc.club</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var SQUAD = [
+    {n:1, name:"David Okafor",      pos:"Goalkeeper", role:"Goalkeeper", cap:false},
+    {n:12,name:"Lucas Brenner",     pos:"Goalkeeper", role:"Goalkeeper", cap:false},
+    {n:2, name:"Marco Silva",       pos:"Defender",   role:"Right Back", cap:false},
+    {n:5, name:"James Whitlock",    pos:"Defender",   role:"Centre Back", cap:false},
+    {n:4, name:"Tariq Hassan",      pos:"Defender",   role:"Centre Back", cap:false},
+    {n:3, name:"Diego Romero",      pos:"Defender",   role:"Left Back", cap:false},
+    {n:6, name:"Ethan Caldwell",    pos:"Midfielder", role:"Defensive Mid", cap:false},
+    {n:8, name:"Noah Bennett",      pos:"Midfielder", role:"Central Mid", cap:false},
+    {n:10,name:"Mateo Vega",        pos:"Midfielder", role:"Attacking Mid", cap:true},
+    {n:14,name:"Oliver Grant",      pos:"Midfielder", role:"Box-to-Box", cap:false},
+    {n:7, name:"Kai Thompson",      pos:"Forward",    role:"Right Wing", cap:false},
+    {n:11,name:"Andre Pellegrini",  pos:"Forward",    role:"Left Wing", cap:false},
+    {n:9, name:"Samuel Adeyemi",    pos:"Forward",    role:"Striker", cap:false},
+    {n:17,name:"Felix Moreno",      pos:"Forward",    role:"Striker", cap:false}
+  ];
+  function initials(name){return name.split(" ").map(function(w){return w[0]}).join("").slice(0,2).toUpperCase();}
+  function render(filter){
+    var grid = document.getElementById("roster-grid");
+    grid.innerHTML = "";
+    SQUAD.filter(function(p){return filter==="all"||p.pos===filter;}).forEach(function(p){
+      var el = document.createElement("div");
+      el.className = "player" + (p.cap?" captain":"");
+      el.innerHTML =
+        '<div class="num">'+p.n+'</div>'+
+        '<div class="avatar">'+initials(p.name)+'</div>'+
+        '<span class="pos-tag" style="margin-top:.9rem">'+p.pos+'</span>'+
+        '<div class="pname">'+p.name+'</div>'+
+        '<div class="prole">'+p.role+'</div>';
+      grid.appendChild(el);
+    });
+  }
+  render("all");
+  document.querySelectorAll("#filters .chip").forEach(function(c){
+    c.addEventListener("click", function(){
+      document.querySelectorAll("#filters .chip").forEach(function(x){x.classList.remove("active");});
+      c.classList.add("active");
+      render(c.getAttribute("data-pos"));
+    });
+  });
+</script>
+</body>
+</html>
